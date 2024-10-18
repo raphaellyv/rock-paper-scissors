@@ -6,12 +6,20 @@ const resultsDiv = document.querySelector('#results')
 const computerScoreSpan = document.querySelector('#computer-score')
 const humanScoreSpan = document.querySelector('#human-score')
 
-const resultParagraph = document.createElement("p")
-const winnerParagraph = document.createElement("p")
+const resultParagraph = document.querySelector('#round-result')
+const winnerParagraph = document.querySelector("#game-result")
 
 function getComputerChoice() {
   const randomNumber = Math.random() * 3
   return randomNumber < 1 ? 'Rock' : randomNumber > 2 ? 'Paper' : 'Scissor'
+}
+
+function displayGameWinner(humanScore, computerScore) {
+  if (humanScore > computerScore) {
+    winnerParagraph.textContent = "YOU WIN!!"
+  } else {
+    winnerParagraph.textContent = "YOU LOSE!!"
+  }
 }
 
 function playRound(humanChoice, computerChoice) {
@@ -24,32 +32,23 @@ function playRound(humanChoice, computerChoice) {
   if (computerChoice === humanChoice) {
     result = aTie
   } else if ((computerChoice === 'Rock' && humanChoice === 'Scissor') ||
-  (computerChoice === 'Paper' && humanChoice === 'Rock') ||
-  (computerChoice === 'Scissor' && humanChoice === 'Paper')
-) {
-  result = computerWins
-  computerScore+=1
-} else {
-  result = humanWins
-  humanScore+=1
-}
-
-  const isGameOver = humanScore === 5 || computerScore === 5
+    (computerChoice === 'Paper' && humanChoice === 'Rock') ||
+    (computerChoice === 'Scissor' && humanChoice === 'Paper')
+  ) {
+    result = computerWins
+    computerScore+=1
+  } else {
+    result = humanWins
+    humanScore+=1
+  }
+  
   resultParagraph.textContent = result
-  resultsDiv.appendChild(resultParagraph)
-
+  
   computerScoreSpan.textContent = computerScore
   humanScoreSpan.textContent = humanScore
   
-  resultsDiv.appendChild(winnerParagraph)
-  
-  if (isGameOver) {
-    if (humanScore > computerScore) {
-      winnerParagraph.textContent = "YOU WIN!!"
-    } else {
-      winnerParagraph.textContent = "YOU LOSE!!"
-    }
-  }
+  const isGameOver = humanScore === 5 || computerScore === 5
+  isGameOver && displayGameWinner(humanScore, computerScore)
 }
 
 possibleChoices.map((choice) =>{
