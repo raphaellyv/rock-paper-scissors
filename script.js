@@ -1,7 +1,13 @@
 let humanScore = 0
 let computerScore = 0
+
 const possibleChoices = ['Rock', 'Paper', 'Scissor']
 const resultsDiv = document.querySelector('#results')
+const computerScoreSpan = document.querySelector('#computer-score')
+const humanScoreSpan = document.querySelector('#human-score')
+
+const resultParagraph = document.createElement("p")
+const winnerParagraph = document.createElement("p")
 
 function getComputerChoice() {
   const randomNumber = Math.random() * 3
@@ -29,13 +35,12 @@ function playRound(humanChoice, computerChoice) {
 }
 
   const isGameOver = humanScore === 5 || computerScore === 5
-  const resultParagraph = document.createElement("p")
   resultParagraph.textContent = result
   resultsDiv.appendChild(resultParagraph)
-  console.log('human', humanScore)
-  console.log('computer', computerScore)
+
+  computerScoreSpan.textContent = computerScore
+  humanScoreSpan.textContent = humanScore
   
-  const winnerParagraph = document.createElement("p")
   resultsDiv.appendChild(winnerParagraph)
   
   if (isGameOver) {
@@ -45,7 +50,6 @@ function playRound(humanChoice, computerChoice) {
       winnerParagraph.textContent = "YOU LOSE!!"
     }
   }
-  return console.log(result)
 }
 
 possibleChoices.map((choice) =>{
@@ -58,8 +62,6 @@ function playGame(choice) {
 
   if (isGameOn) {
     return playRound(choice, getComputerChoice())
-  } else {
-    return
   }
 }
 
