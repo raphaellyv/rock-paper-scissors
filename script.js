@@ -1,7 +1,8 @@
 let humanScore = 0
 let computerScore = 0
 const possibleChoices = ['Rock', 'Paper', 'Scissor']
-  
+const resultsDiv = document.querySelector('#results')
+
 function getComputerChoice() {
   const randomNumber = Math.random() * 3
   return randomNumber < 1 ? 'Rock' : randomNumber > 2 ? 'Paper' : 'Scissor'
@@ -26,7 +27,13 @@ function playRound(humanChoice, computerChoice) {
     result = humanWins
     humanScore+=1
   }
-    
+  
+  
+  const resultParagraph = document.createElement("p")
+  resultParagraph.textContent = result
+  resultsDiv.appendChild(resultParagraph)
+  console.log('human', humanScore)
+  console.log('computer', computerScore)
   return console.log(result)
 }
 
