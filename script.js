@@ -16,8 +16,10 @@ function getComputerChoice() {
 function displayGameWinner(humanScore, computerScore) {
   if (humanScore > computerScore) {
     winnerParagraph.textContent = "GAME OVER! YOU WIN!!"
+    winnerParagraph.style.cssText = "background-color: #cefdce; color: #689f38"
   } else {
     winnerParagraph.textContent = "GAME OVER! YOU LOSE!!"
+    winnerParagraph.style.cssText = "background-color: #ffdde0; color: #d32f2f"
   }
 }
 
