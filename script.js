@@ -5,7 +5,6 @@ const possibleChoices = ['Rock', 'Paper', 'Scissor']
 const resultsDiv = document.querySelector('#results')
 const computerScoreSpan = document.querySelector('#computer-score')
 const humanScoreSpan = document.querySelector('#human-score')
-
 const resultParagraph = document.querySelector('#round-result')
 const winnerParagraph = document.querySelector("#game-result")
 
@@ -16,9 +15,9 @@ function getComputerChoice() {
 
 function displayGameWinner(humanScore, computerScore) {
   if (humanScore > computerScore) {
-    winnerParagraph.textContent = "YOU WIN!!"
+    winnerParagraph.textContent = "GAME OVER! YOU WIN!!"
   } else {
-    winnerParagraph.textContent = "YOU LOSE!!"
+    winnerParagraph.textContent = "GAME OVER! YOU LOSE!!"
   }
 }
 
@@ -51,11 +50,6 @@ function playRound(humanChoice, computerChoice) {
   isGameOver && displayGameWinner(humanScore, computerScore)
 }
 
-possibleChoices.map((choice) =>{
-  const btn = document.querySelector(`#${choice.toLowerCase()}-btn`)
-  btn.addEventListener("click", () => { playGame(choice) })
-})
-
 function playGame(choice) {
   const isGameOn = humanScore < 5 && computerScore < 5
 
@@ -63,4 +57,10 @@ function playGame(choice) {
     return playRound(choice, getComputerChoice())
   }
 }
+
+possibleChoices.map((choice) =>{
+  const btn = document.querySelector(`#${choice.toLowerCase()}-btn`)
+  btn.addEventListener("click", () => { playGame(choice) })
+})
+
 
