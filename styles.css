@@ -16,6 +16,10 @@ h1, h2 {
   text-align: center;
 }
 
+h1 {
+  margin-bottom: 0;
+}
+
 .option-btn {
   font-size: 90px;
   border-radius: 50%;
@@ -31,10 +35,6 @@ h1, h2 {
   min-width: 350px;
   max-height: 450px;
   padding: 5px;
-  /* position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); */
   background-color: #F9FBF2;
   border-radius: 10px;
   box-shadow: 0 15px 25px rgba(0,0,0,0.15);
@@ -69,9 +69,9 @@ span {
 
 #reset-btn {
   position: absolute;
-  top: 60%;
+  top: 55%;
   left: 50%;
-  transform: translate(-50%, -60%);
+  transform: translate(-50%, -55%);
   background-color: #0E1C36;
   border: none;
   box-shadow: 0 15px 25px rgba(0,0,0,0.15);
